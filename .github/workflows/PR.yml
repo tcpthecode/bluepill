@@ -19,7 +19,7 @@ jobs:
         with:
           name: xcresults
           path: build/**/*.xcresult
-          retension-days: 14
+          retention-days: 14
 
 
   # Second machine, runs BP tests and makes build
@@ -40,4 +40,4 @@ jobs:
         with:
           name: xcresults
           path: build/**/*.xcresult
-          retension-days: 14
+          retention-days: 14
