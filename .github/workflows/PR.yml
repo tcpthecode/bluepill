@@ -15,9 +15,10 @@ jobs:
       - name: Run Bluepill tests
         run: ./scripts/bluepill.sh instance_tests
       - name: Capture xcresult files
+        if: ${{ always() }}
         uses: actions/upload-artifact@v2
         with:
-          name: xcresults
+          name: xcresults-bluepill-tests
           path: build/**/*.xcresult
           retention-days: 14
 
@@ -36,8 +37,9 @@ jobs:
       - name: Build and Package
         run: ./scripts/bluepill.sh build
       - name: Capture xcresult files
+        if: ${{ always() }}
         uses: actions/upload-artifact@v2
         with:
-          name: xcresults
+          name: xcresults-bp-test
           path: build/**/*.xcresult
           retention-days: 14
