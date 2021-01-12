@@ -34,10 +34,10 @@
     self.config.runtime = @BP_DEFAULT_RUNTIME;
     self.config.repeatTestsCount = @1;
     self.config.errorRetriesCount = @1;
-    self.config.deviceType = @BP_DEFAULT_DEVICE_TYPE;
-}
+    self.config.deviceType = @BP_DEFAULT_DEVICE_TYPE;}
 
 - (void)tearDown {
+    // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
 }
 
