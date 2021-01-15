@@ -233,9 +233,10 @@ static inline NSString* getVideoPath(NSString *directory, NSString *testClass, N
 {
     [self stopVideoRecording:YES];
     NSString *videoFileName = getVideoPath(self.context.config.videosDirectory, testClass, method, self.context.attemptNumber);
-    NSString *command = [NSString stringWithFormat:@"xcrun simctl io %@ recordVideo --force %@", [self.simulator UDID], videoFileName];
+    NSString *command = [NSString stringWithFormat:@"xcrun simctl io \"%@\" recordVideo --force \"%@\"", [self.simulator UDID], videoFileName];
     NSTask *task = [BPUtils buildShellTaskForCommand:command];
     self.recordVideoTask = task;
+    task.qualityOfService = NSQualityOfServiceUserInteractive;
     [task launch];
     [BPUtils printInfo:INFO withString:@"Started recording video to %@", videoFileName];
     [BPUtils printInfo:DEBUGINFO withString:@"Started recording video task with pid %d and command: %@",  [task processIdentifier], [BPUtils getCommandStringForTask:task]];
@@ -265,7 +266,7 @@ static inline NSString* getVideoPath(NSString *directory, NSString *testClass, N
     [task waitUntilExit];
 
     if ([task terminationStatus] != 0) {
-        [BPUtils printInfo:ERROR withString:@"Video task was interrupted, but exited with non-zero status %d", [task terminationStatus]];
+        [BPUtils printInfo:ERROR withString:@"Video task was interrupted, but exited with non-zero status %d, reason %ld", [task terminationStatus], (long)[task terminationReason]];
     }
 
     NSString *filePath = [[task arguments].lastObject componentsSeparatedByString:@" "].lastObject;
