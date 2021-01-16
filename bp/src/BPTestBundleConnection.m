@@ -236,7 +236,6 @@ static inline NSString* getVideoPath(NSString *directory, NSString *testClass, N
     NSString *command = [NSString stringWithFormat:@"xcrun simctl io \"%@\" recordVideo --force \"%@\"", [self.simulator UDID], videoFileName];
     NSTask *task = [BPUtils buildShellTaskForCommand:command];
     self.recordVideoTask = task;
-    task.qualityOfService = NSQualityOfServiceUserInteractive;
     [task launch];
     [BPUtils printInfo:INFO withString:@"Started recording video to %@", videoFileName];
     [BPUtils printInfo:DEBUGINFO withString:@"Started recording video task with pid %d and command: %@",  [task processIdentifier], [BPUtils getCommandStringForTask:task]];
