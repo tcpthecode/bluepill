@@ -270,6 +270,8 @@ static inline NSString* getVideoPath(NSString *directory, NSString *testClass, N
 
     NSString *filePath = [[task arguments].lastObject componentsSeparatedByString:@" "].lastObject;
     if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+        [BPUtils printInfo:ERROR withString:@"==========================================================="];
+        [BPUtils printInfo:ERROR withString:[BPUtils runShell:[NSString stringWithFormat:@"ls -l %@", filePath]]];
         [BPUtils printInfo:ERROR withString:@"Video recording file missing, expected at path %@!", filePath];
     }
     self.recordVideoTask = nil;

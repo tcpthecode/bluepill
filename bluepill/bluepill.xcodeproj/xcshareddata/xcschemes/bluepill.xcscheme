@@ -74,6 +74,47 @@
                BlueprintName = "bluepill-tests"
                ReferencedContainer = "container:bluepill.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "BPAppTests">
+               </Test>
+               <Test
+                  Identifier = "BPCLITests">
+               </Test>
+               <Test
+                  Identifier = "BPHTMLReportWriteTests">
+               </Test>
+               <Test
+                  Identifier = "BPIntegrationTests/testClonedSimulators">
+               </Test>
+               <Test
+                  Identifier = "BPIntegrationTests/testOneBPInstance">
+               </Test>
+               <Test
+                  Identifier = "BPIntegrationTests/testTwoBPInstances">
+               </Test>
+               <Test
+                  Identifier = "BPIntegrationTests/testTwoBPInstancesTestCaseFail">
+               </Test>
+               <Test
+                  Identifier = "BPIntegrationTests/testTwoBPInstancesWithTestPlanJson">
+               </Test>
+               <Test
+                  Identifier = "BPIntegrationTests/testTwoBPInstancesWithUITests">
+               </Test>
+               <Test
+                  Identifier = "BPIntegrationTests/testTwoBPInstancesWithXCTestRunFile">
+               </Test>
+               <Test
+                  Identifier = "BPPackerTests">
+               </Test>
+               <Test
+                  Identifier = "BPReportCollectorTests">
+               </Test>
+               <Test
+                  Identifier = "BPRunnerTests">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
    </TestAction>
