@@ -264,6 +264,7 @@ static inline NSString* getVideoPath(NSString *directory, NSString *testClass, N
     [task interrupt];
     [task waitUntilExit];
 
+    [NSThread sleepForTimeInterval:10.0];
     if ([task terminationStatus] != 0) {
         [BPUtils printInfo:ERROR withString:@"Video task was interrupted, but exited with non-zero status %d, reason %ld", [task terminationStatus], (long)[task terminationReason]];
     }
@@ -271,7 +272,7 @@ static inline NSString* getVideoPath(NSString *directory, NSString *testClass, N
     NSString *filePath = [[task arguments].lastObject componentsSeparatedByString:@" "].lastObject;
     if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
         [BPUtils printInfo:ERROR withString:@"==========================================================="];
-        [BPUtils printInfo:ERROR withString:[BPUtils runShell:[NSString stringWithFormat:@"ls -l %@", filePath]]];
+        [BPUtils printInfo:ERROR withString:@"%@", [BPUtils runShell:[NSString stringWithFormat:@"ls -l %@", filePath]]];
         [BPUtils printInfo:ERROR withString:@"Video recording file missing, expected at path %@!", filePath];
     }
     self.recordVideoTask = nil;
